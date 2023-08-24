@@ -1,14 +1,14 @@
-echo " "
-echo " "    
-echo " "
+echo ""
+echo ""    
+echo ""
 
 clear
 
-echo " "
-echo " "    
-echo " "
-echo " "
-echo " "
+echo ""
+echo ""    
+echo ""
+echo ""
+echo ""
 echo "       ####     Install Last Ver From Code Server     ######       "
 echo ""
 echo ""
