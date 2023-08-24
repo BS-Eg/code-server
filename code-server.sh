@@ -182,7 +182,7 @@ echo "	  proxy_set_header Connection "upgrade";                                 
 echo "	  proxy_set_header Accept-Encoding gzip;                                   "
 echo "	  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;             "
 echo "	  proxy_http_version 1.1;                                                  "
-echo "	}
+echo "	}                                                                          "
 echo "}                                                                            "
 
 
@@ -209,5 +209,11 @@ echo "    or   "
 
 echo "    http://your-domain    "
 
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
 
 
