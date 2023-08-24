@@ -85,7 +85,7 @@ systemctl start nginx
 
 systemctl enable --now nginx
 
-# systemctl restart nginx
+systemctl restart nginx
 
 rm -r -f /etc/nginx/sites-enabled/default
 
@@ -94,8 +94,17 @@ rm -r -f /etc/nginx/sites-available/default
 
 touch /etc/nginx/sites-available/code-server.conf
 
-ln -s /etc/nginx/sites-available/code-server.conf /etc/nginx/sites-enabled/code-server.conf
 
+echo " "
+echo " "
+echo " "    
+echo " "
+echo " "
+echo " "
+echo "       ####     install nginx and create Config File For Code server in Nginx     ######       "
+echo ""
+echo ""
+echo ""
 
 echo "server {">>code-server.conf
 echo "	listen 80;">>code-server.conf
@@ -115,6 +124,7 @@ echo "	}">>code-server.conf
 echo "}">>code-server.conf
 
 
+ln -s /etc/nginx/sites-available/code-server.conf /etc/nginx/sites-enabled/code-server.conf
 
 systemctl restart nginx
 
