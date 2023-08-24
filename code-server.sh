@@ -131,3 +131,16 @@ echo ""
 echo ""
 echo ""
 
+
+echo "    to get passWord :                    "
+
+echo "    nano ~/.config/code-server/config.yaml  "
+
+echo "    http:server-ip-address    "
+
+echo "    or   "
+
+echo "    http://your-domain    "
+
+
+
