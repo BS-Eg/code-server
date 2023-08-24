@@ -39,16 +39,16 @@ touch /lib/systemd/system/odoo.service
 
 cd  /lib/systemd/system
 
-echo "[Unit]">code-server.service
+echo "[Unit]">>code-server.service
 echo "Description=code-server">>code-server.service
 echo "After=nginx.service">>code-server.service
-echo "					">>code-server.conf
+echo "					">>code-server.service
 echo "[Service]">>code-server.service
 echo "Type=simple">>code-server.service
 echo "Environment=PASSWORD=147258Sa">>code-server.service
 echo "ExecStart=/usr/bin/code-server --bind-addr 127.0.0.1:3443 --user-data-dir /var/lib/code-server --auth password ">>code-server.service
 echo "Restart=always ">>code-server.service
-echo "					">>code-server.conf
+echo "					">>code-server.service
 echo "[Install] ">>code-server.service
 echo "WantedBy=multi-user.target ">>code-server.service
 
