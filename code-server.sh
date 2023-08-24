@@ -12,6 +12,10 @@ echo ""
 
 sudo sudo apt update && sudo apt upgrade -y
 
+cd /
+mkdir -p /odoo/code
+cd /odoo/code
+
 
 curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
 
