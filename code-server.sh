@@ -79,7 +79,7 @@ systemctl start nginx
 
 systemctl enable --now nginx
 
-systemctl status nginx
+# systemctl restart nginx
 
 rm -r -f /etc/nginx/sites-enabled/default
 
