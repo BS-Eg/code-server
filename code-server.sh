@@ -1,3 +1,7 @@
+echo " "
+echo " "    
+echo " "
+
 clear
 
 echo " "
