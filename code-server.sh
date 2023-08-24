@@ -85,13 +85,10 @@ rm -r -f /etc/nginx/sites-enabled/default
 
 rm -r -f /etc/nginx/sites-available/default
 
-touch /etc/nginx/sites-available/code-server
-
-
-ln -s /etc/nginx/sites-available/code-server /etc/nginx/sites-enabled/code-server
-
 
 touch /etc/nginx/sites-available/code-server.conf
+
+ln -s /etc/nginx/sites-available/code-server /etc/nginx/sites-enabled/code-server.conf
 
 
 echo "server {">>code-server.conf
