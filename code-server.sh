@@ -41,22 +41,22 @@ echo ""
 echo ""
 echo ""
 
-touch /lib/systemd/system/odoo.service
+touch /lib/systemd/system/code-server.service
 
 cd  /lib/systemd/system
 
-echo "[Unit]">>code-server.service
-echo "Description=code-server">>code-server.service
-echo "After=nginx.service">>code-server.service
-echo "					">>code-server.service
-echo "[Service]">>code-server.service
-echo "Type=simple">>code-server.service
-echo "Environment=PASSWORD=147258Sa">>code-server.service
-echo "ExecStart=/usr/bin/code-server --bind-addr 127.0.0.1:3443 --user-data-dir /var/lib/code-server --auth password ">>code-server.service
-echo "Restart=always ">>code-server.service
-echo "					">>code-server.service
-echo "[Install] ">>code-server.service
-echo "WantedBy=multi-user.target ">>code-server.service
+echo "[Unit]">>/lib/systemd/system/code-server.service
+echo "Description=code-server">>/lib/systemd/system/code-server.service
+echo "After=nginx.service">>/lib/systemd/system/code-server.service
+echo "					">>/lib/systemd/system/code-server.service
+echo "[Service]">>/lib/systemd/system/code-server.service
+echo "Type=simple">>/lib/systemd/system/code-server.service
+echo "Environment=PASSWORD=147258Sa">>/lib/systemd/system/code-server.service
+echo "ExecStart=/usr/bin/code-server --bind-addr 127.0.0.1:3443 --user-data-dir /var/lib/code-server --auth password ">>/lib/systemd/system/code-server.service
+echo "Restart=always ">>/lib/systemd/system/code-server.service
+echo "					">>/lib/systemd/system/code-server.service
+echo "[Install] ">>/lib/systemd/system/code-server.service
+echo "WantedBy=multi-user.target ">>/lib/systemd/system/code-server.service
 
 
 
@@ -64,7 +64,7 @@ echo "WantedBy=multi-user.target ">>code-server.service
 systemctl enable --now code-server
 
 
-systemctl start code-server
+systemctl restart code-server
 
 
 
@@ -106,22 +106,24 @@ echo ""
 echo ""
 echo ""
 
-echo "server {">>code-server.conf
-echo "	listen 80;">>code-server.conf
-echo "	listen [::]:80;">>code-server.conf
-echo "					">>code-server.conf
-echo "	server_name code-server.localhost;">>code-server.conf
-echo "					">>code-server.conf
-echo "	location / {">>code-server.conf
-echo "	  proxy_pass http://localhost:3443;">>code-server.conf
-echo "	  proxy_set_header Host $host;">>code-server.conf
-echo "	  proxy_set_header Upgrade $http_upgrade;">>code-server.conf
-echo "	  proxy_set_header Connection "upgrade";">>code-server.conf
-echo "	  proxy_set_header Accept-Encoding gzip;">>code-server.conf
-echo "	  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;">>code-server.conf
-echo "	  proxy_http_version 1.1;">>code-server.conf
-echo "	}">>code-server.conf
-echo "}">>code-server.conf
+cd /etc/nginx/sites-available
+
+echo "server {">>/etc/nginx/sites-available/code-server.conf
+echo "	listen 80;">>/etc/nginx/sites-available/code-server.conf
+echo "	listen [::]:80;">>/etc/nginx/sites-available/code-server.conf
+echo "					">>/etc/nginx/sites-available/code-server.conf
+echo "	server_name code-server.localhost;">>/etc/nginx/sites-available/code-server.conf
+echo "					">>/etc/nginx/sites-available/code-server.conf
+echo "	location / {">>/etc/nginx/sites-available/code-server.conf
+echo "	  proxy_pass http://localhost:3443;">>/etc/nginx/sites-available/code-server.conf
+echo "	  proxy_set_header Host $host;">>/etc/nginx/sites-available/code-server.conf
+echo "	  proxy_set_header Upgrade $http_upgrade;">>/etc/nginx/sites-available/code-server.conf
+echo "	  proxy_set_header Connection "upgrade";">>/etc/nginx/sites-available/code-server.conf
+echo "	  proxy_set_header Accept-Encoding gzip;">>/etc/nginx/sites-available/code-server.conf
+echo "	  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;">>/etc/nginx/sites-available/code-server.conf
+echo "	  proxy_http_version 1.1;">>/etc/nginx/sites-available/code-server.conf
+echo "	}">>/etc/nginx/sites-available/code-server.conf
+echo "}">>/etc/nginx/sites-available/code-server.conf
 
 
 ln -s /etc/nginx/sites-available/code-server.conf /etc/nginx/sites-enabled/code-server.conf
@@ -144,6 +146,7 @@ echo ""
 echo ""
 echo ""
 
+cd /
 
 rm -r -f code-server.sh
 
