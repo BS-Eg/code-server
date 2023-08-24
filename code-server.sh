@@ -1,5 +1,4 @@
 echo " "
-echo " "
 echo " "    
 echo " "
 echo " "
@@ -127,6 +126,9 @@ echo "       ####     install Complete Success     ######       "
 echo ""
 echo ""
 echo ""
+
+
+rm -r -f code-server.sh
 
 
 echo "    to get passWord :                    "
