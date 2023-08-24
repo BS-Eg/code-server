@@ -92,7 +92,6 @@ rm -r -f /etc/nginx/sites-enabled/default
 rm -r -f /etc/nginx/sites-available/default
 
 
-touch /etc/nginx/sites-available/code-server
 
 
 echo " "
@@ -108,25 +107,28 @@ echo ""
 
 cd /etc/nginx/sites-available
 
-echo "server {" >> /etc/nginx/sites-available/code-server
-echo "	listen 80;" >> /etc/nginx/sites-available/code-server
-echo "	listen [::]:80;" >> /etc/nginx/sites-available/code-server
-echo "					" >> /etc/nginx/sites-available/code-server
-echo "	server_name code-server.localhost;" >> /etc/nginx/sites-available/code-server
-echo "					" >> /etc/nginx/sites-available/code-server
-echo "	location / {" >> /etc/nginx/sites-available/code-server
-echo "	  proxy_pass http://localhost:3443;" >> /etc/nginx/sites-available/code-server
-echo "	  proxy_set_header Host $host;" >> /etc/nginx/sites-available/code-server
-echo "	  proxy_set_header Upgrade $http_upgrade;" >> /etc/nginx/sites-available/code-server
-echo "	  proxy_set_header Connection "upgrade";" >> /etc/nginx/sites-available/code-server
-echo "	  proxy_set_header Accept-Encoding gzip;" >> /etc/nginx/sites-available/code-server
-echo "	  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;" >> /etc/nginx/sites-available/code-server
-echo "	  proxy_http_version 1.1;" >> /etc/nginx/sites-available/code-server
-echo "	}" >> /etc/nginx/sites-available/code-server
-echo "}" >> /etc/nginx/sites-available/code-server
+# echo "server {" >> /etc/nginx/sites-available/code-server
+# echo "	listen 80;" >> /etc/nginx/sites-available/code-server
+# echo "	listen [::]:80;" >> /etc/nginx/sites-available/code-server
+# echo "					" >> /etc/nginx/sites-available/code-server
+# echo "	server_name code-server.localhost;" >> /etc/nginx/sites-available/code-server
+# echo "					" >> /etc/nginx/sites-available/code-server
+# echo "	location / {" >> /etc/nginx/sites-available/code-server
+# echo "	  proxy_pass http://localhost:3443;" >> /etc/nginx/sites-available/code-server
+# echo "	  proxy_set_header Host $host;" >> /etc/nginx/sites-available/code-server
+# echo "	  proxy_set_header Upgrade $http_upgrade;" >> /etc/nginx/sites-available/code-server
+# echo "	  proxy_set_header Connection "upgrade";" >> /etc/nginx/sites-available/code-server
+# echo "	  proxy_set_header Accept-Encoding gzip;" >> /etc/nginx/sites-available/code-server
+# echo "	  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;" >> /etc/nginx/sites-available/code-server
+# echo "	  proxy_http_version 1.1;" >> /etc/nginx/sites-available/code-server
+# echo "	}" >> /etc/nginx/sites-available/code-server
+# echo "}" >> /etc/nginx/sites-available/code-server
 
 
-ln -s /etc/nginx/sites-available/code-server /etc/nginx/sites-enabled/code-server
+
+touch /etc/nginx/sites-available/code-server.conf
+
+ln -s /etc/nginx/sites-available/code-server.conf /etc/nginx/sites-enabled/code-server.conf
 
 systemctl restart nginx
 
@@ -149,6 +151,52 @@ echo ""
 cd /
 
 rm -r -f code-server.sh
+
+
+
+echo ""
+echo ""
+echo ""
+echo "  Copy the Script Blow And Past To ..........     "
+echo ""
+echo ""
+echo " nano /etc/nginx/sites-available/code-server.conf"
+echo ""
+echo ""
+echo ""
+echo ""
+
+
+
+echo "server {                                                                     " 
+echo "	listen 80;                                                                 "
+echo "	listen [::]:80;                                                            "
+echo "                                                                             "
+echo "	server_name code-server.localhost;                                         "
+echo "                                                                             "
+echo "	location / {                                                               "
+echo "	  proxy_pass http://localhost:3443;                                        "
+echo "	  proxy_set_header Host $host;                                             "
+echo "	  proxy_set_header Upgrade $http_upgrade;                                  "
+echo "	  proxy_set_header Connection "upgrade";                                   "
+echo "	  proxy_set_header Accept-Encoding gzip;                                   "
+echo "	  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;             "
+echo "	  proxy_http_version 1.1;                                                  "
+echo "	}
+echo "}                                                                            "
+
+
+echo ""
+echo ""
+echo ""
+echo "  And Then run the command Below  !!!!!!! "
+echo ""
+echo ""
+echo "	  systemctl restart nginx "
+
+echo "	  systemctl restart code-server "
+
+echo "	  sudo systemctl reload nginx "
 
 
 echo "    to get passWord :                    "
